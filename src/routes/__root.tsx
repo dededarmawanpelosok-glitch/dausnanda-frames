@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 
@@ -25,48 +25,9 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dausnanda — Cinematic Event Documentation" },
-      { name: "description", content: "Dausnanda creates cinematic documentation for brand launches, corporate events, institutions, and live performances." },
-      { name: "author", content: "Firdaus Ananda" },
-      { property: "og:title", content: "Dausnanda — Cinematic Event Documentation" },
-      { property: "og:description", content: "Dausnanda creates cinematic documentation for brand launches, corporate events, institutions, and live performances." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@dausnanda" },
-      { name: "twitter:title", content: "Dausnanda — Cinematic Event Documentation" },
-      { name: "twitter:description", content: "Dausnanda creates cinematic documentation for brand launches, corporate events, institutions, and live performances." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/96a92509-4ab7-42fd-8320-56fb45c6349b" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/96a92509-4ab7-42fd-8320-56fb45c6349b" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   return <Outlet />;
