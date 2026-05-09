@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { MediaPlaceholder } from "@/components/site/MediaPlaceholder";
+import { VideoEmbed } from "@/components/site/VideoEmbed";
 import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/work")({
@@ -18,8 +18,6 @@ export const Route = createFileRoute("/work")({
 const archive = [
   { client: "Traveloka", note: "Brand activation coverage" },
   { client: "Takeda", note: "Corporate moment documentation" },
-  { client: "Presisi", note: "Institutional event coverage" },
-  { client: "Women's Health Expo 2025", note: "Conference documentation" },
 ];
 
 function WorkPage() {
@@ -48,7 +46,7 @@ function WorkPage() {
             >
               <div className="grid lg:grid-cols-12 gap-0">
                 <div className="lg:col-span-7 relative">
-                  <MediaPlaceholder src={p.cover} alt={p.client} ratio="16/9" label={p.role} />
+                  <VideoEmbed youtubeId={p.youtubeId} title={p.client} ratio="16/9" label={p.role} />
                 </div>
                 <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between">
                   <div>
