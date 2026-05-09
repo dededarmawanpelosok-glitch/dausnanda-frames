@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { MediaPlaceholder } from "@/components/site/MediaPlaceholder";
+import { VideoEmbed } from "@/components/site/VideoEmbed";
 import { projects } from "@/data/projects";
 import heroImg from "@/assets/hero-cinema.jpg";
 import lensImg from "@/assets/texture-lens.jpg";
@@ -30,10 +30,10 @@ const trustNames = [
   "BYON by BSI",
   "Indo Kordsa",
   "Saburai Grand Jam",
+  "Women's Health Expo 2025",
+  "Presisi",
   "Traveloka",
   "Takeda",
-  "Presisi",
-  "Women's Health Expo 2025",
 ];
 
 const services = [
@@ -232,7 +232,7 @@ function HomePage() {
                 className="snap-start shrink-0 w-[78%] sm:w-[46%] lg:w-[32%] group"
               >
                 <div className="relative">
-                  <MediaPlaceholder src={p.cover} alt={p.client} ratio="4/5" label={p.role} />
+                  <VideoEmbed youtubeId={p.youtubeId} title={p.client} ratio="4/5" label={p.role} />
                   <div className="absolute top-4 left-4 text-[10px] tracking-[0.25em] text-primary uppercase">#{String(i + 1).padStart(2, "0")}</div>
                 </div>
                 <div className="mt-4">
@@ -242,24 +242,6 @@ function HomePage() {
                 </div>
               </Link>
             ))}
-            {/* Archive card */}
-            <div className="snap-start shrink-0 w-[78%] sm:w-[46%] lg:w-[32%]">
-              <div className="aspect-[4/5] rounded-3xl border border-hairline bg-elevated p-6 flex flex-col justify-between relative overflow-hidden">
-                <div className="absolute -right-12 -top-12 size-56 glow-orange opacity-50" />
-                <div>
-                  <div className="text-[10px] tracking-[0.25em] text-primary uppercase">#04</div>
-                  <div className="mt-3 text-xs text-muted-foreground">Other Projects 2025</div>
-                  <div className="mt-1 text-lg font-medium">Archive proof</div>
-                </div>
-                <ul className="space-y-2 text-sm text-foreground/80">
-                  <li>— Traveloka</li>
-                  <li>— Takeda</li>
-                  <li>— Presisi</li>
-                  <li>— Women's Health Expo 2025</li>
-                </ul>
-                <p className="text-xs text-muted-foreground">Visuals available on request, pending client approval.</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -275,7 +257,7 @@ function HomePage() {
           </div>
           <div className="grid grid-cols-12 gap-4">
             <Link to="/work/$slug" params={{ slug: "saburai" }} className="col-span-12 lg:col-span-8 group">
-              <MediaPlaceholder src={projects[2].cover} alt="Saburai Grand Jam" ratio="21/9" label="Lead Documentation" />
+              <VideoEmbed youtubeId="wK9AiXnVDDo" title="Saburai Grand Jam" ratio="21/9" label="Lead Documentation" />
               <div className="mt-3 flex items-center justify-between">
                 <div>
                   <div className="text-xs text-muted-foreground">Music / Live Event</div>
@@ -285,20 +267,34 @@ function HomePage() {
               </div>
             </Link>
             <Link to="/work/$slug" params={{ slug: "byon" }} className="col-span-12 sm:col-span-6 lg:col-span-4 group">
-              <MediaPlaceholder src={projects[0].cover} alt="BYON by BSI" ratio="4/5" label="Brand Launch" />
+              <VideoEmbed youtubeId="mhmssCjUC0w" title="BYON by BSI" ratio="4/5" label="Brand Launch" />
               <div className="mt-3">
                 <div className="text-xs text-muted-foreground">Brand Launch</div>
                 <div className="text-lg font-medium group-hover:text-primary">BYON by BSI</div>
               </div>
             </Link>
-            <Link to="/work/$slug" params={{ slug: "kordsa" }} className="col-span-12 sm:col-span-6 lg:col-span-7 group">
-              <MediaPlaceholder src={projects[1].cover} alt="Indo Kordsa" ratio="16/9" label="Corporate Recap" />
+            <Link to="/work/$slug" params={{ slug: "kordsa" }} className="col-span-12 sm:col-span-6 lg:col-span-4 group">
+              <VideoEmbed youtubeId="assEf15e9Z8" title="Indo Kordsa" ratio="16/9" label="Corporate Recap" />
               <div className="mt-3">
                 <div className="text-xs text-muted-foreground">Corporate Culture</div>
                 <div className="text-lg font-medium group-hover:text-primary">Indo Kordsa</div>
               </div>
             </Link>
-            <div className="col-span-12 lg:col-span-5 panel p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
+            <Link to="/work/$slug" params={{ slug: "expo-health" }} className="col-span-12 sm:col-span-6 lg:col-span-4 group">
+              <VideoEmbed youtubeId="EyKkv9BH2Rw" title="Women's Health Expo 2025" ratio="16/9" label="Conference" />
+              <div className="mt-3">
+                <div className="text-xs text-muted-foreground">Institutional</div>
+                <div className="text-lg font-medium group-hover:text-primary">Women's Health Expo 2025</div>
+              </div>
+            </Link>
+            <Link to="/work/$slug" params={{ slug: "presisi" }} className="col-span-12 sm:col-span-6 lg:col-span-4 group">
+              <VideoEmbed youtubeId="b1ZL2zN-dMY" title="Presisi" ratio="16/9" label="Institutional" />
+              <div className="mt-3">
+                <div className="text-xs text-muted-foreground">Institutional / Corporate</div>
+                <div className="text-lg font-medium group-hover:text-primary">Presisi</div>
+              </div>
+            </Link>
+            <div className="col-span-12 lg:col-span-4 panel p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
               <div className="absolute -right-16 -top-16 size-64 glow-blue opacity-50" />
               <div>
                 <p className="eyebrow">Notes from the field</p>

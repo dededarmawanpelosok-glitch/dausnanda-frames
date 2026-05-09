@@ -1,5 +1,12 @@
+export type ProjectSlug =
+  | "byon"
+  | "kordsa"
+  | "saburai"
+  | "expo-health"
+  | "presisi";
+
 export type Project = {
-  slug: "byon" | "kordsa" | "saburai";
+  slug: ProjectSlug;
   client: string;
   title: string;
   category: string;
@@ -7,6 +14,7 @@ export type Project = {
   year: string;
   location?: string;
   cover: string;
+  youtubeId: string;
   blurb: string;
   narrative: string[];
   highlights: { label: string; value: string }[];
@@ -26,6 +34,7 @@ export const projects: Project[] = [
     role: "Videographer",
     year: "2025",
     cover: byon,
+    youtubeId: "mhmssCjUC0w",
     blurb:
       "Cinematic launch documentation for BYON by BSI — capturing the moment a new digital banking brand met the public.",
     narrative: [
@@ -48,6 +57,7 @@ export const projects: Project[] = [
     role: "Videographer & Video Editor",
     year: "2025",
     cover: kordsa,
+    youtubeId: "assEf15e9Z8",
     blurb:
       "A multi-day internal company event — meetings, games, performances, and Best Of awards — edited into a film about teamwork and appreciation.",
     narrative: [
@@ -71,6 +81,7 @@ export const projects: Project[] = [
     year: "2025",
     location: "Lampung, Indonesia",
     cover: saburai,
+    youtubeId: "wK9AiXnVDDo",
     blurb:
       "Leading the documentation team for a record-context live event with 1,000 musicians, multiple stages, and guest performances.",
     narrative: [
@@ -84,6 +95,52 @@ export const projects: Project[] = [
       { label: "Context", value: "MURI record event" },
     ],
     deliverables: ["Multi-camera live capture", "Cinematic recap film", "Press & social cuts"],
+  },
+  {
+    slug: "expo-health",
+    client: "Women's Health Expo 2025",
+    title: "A national health expo, documented end-to-end",
+    category: "Institutional / Conference",
+    role: "Videographer & Editor",
+    year: "2025",
+    cover: "https://i.ytimg.com/vi/EyKkv9BH2Rw/maxresdefault.jpg",
+    youtubeId: "EyKkv9BH2Rw",
+    blurb:
+      "Cinematic conference documentation — keynotes, exhibitor floor, and audience moments shaped into a single coherent recap.",
+    narrative: [
+      "Women's Health Expo 2025 brought together speakers, exhibitors, and a public audience over a focused programme. The brief was to capture the scale, the stage moments, and the human energy on the floor.",
+      "Coverage moved between keynote sessions, panel discussions, exhibitor booths, and candid audience reactions — building a film that reads as a public record, not just an internal recap.",
+      "The final cut leans into clarity: clean stage frames, considered cutaways, and a pace that honours the institutional weight of the event.",
+    ],
+    highlights: [
+      { label: "Format", value: "Conference recap" },
+      { label: "Crew role", value: "Videographer & Editor" },
+      { label: "Audience", value: "Public + Industry" },
+    ],
+    deliverables: ["Hero recap film", "Speaker session cuts", "Press-ready stills"],
+  },
+  {
+    slug: "presisi",
+    client: "Presisi",
+    title: "Institutional moment, captured with discipline",
+    category: "Institutional / Corporate Event",
+    role: "Videographer",
+    year: "2025",
+    cover: "https://i.ytimg.com/vi/b1ZL2zN-dMY/maxresdefault.jpg",
+    youtubeId: "b1ZL2zN-dMY",
+    blurb:
+      "An institutional event documented with editorial restraint — accurate, respectful, and built for stakeholder review.",
+    narrative: [
+      "Presisi needed documentation that would carry institutional weight: accurate, polished, and useful across stakeholder channels.",
+      "We focused on the principal moments — opening, key addresses, signing, group portraits — while keeping the camera quiet enough to let the room breathe.",
+      "The final film is editorial: measured pacing, clean color, and a structure that lets leadership and press use it without further work.",
+    ],
+    highlights: [
+      { label: "Format", value: "Institutional recap" },
+      { label: "Crew role", value: "Videographer" },
+      { label: "Tone", value: "Editorial, restrained" },
+    ],
+    deliverables: ["Recap film", "Key moment cuts", "Selected stills"],
   },
 ];
 

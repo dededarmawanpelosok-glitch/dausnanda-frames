@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { MediaPlaceholder } from "@/components/site/MediaPlaceholder";
-import { getProject, projects } from "@/data/projects";
+import { VideoEmbed } from "@/components/site/VideoEmbed";
+import { getProject, projects, type Project } from "@/data/projects";
 
 export const Route = createFileRoute("/work/$slug")({
   loader: ({ params }) => {
@@ -45,7 +46,7 @@ export const Route = createFileRoute("/work/$slug")({
 });
 
 function CaseStudy() {
-  const { project } = Route.useLoaderData();
+  const { project } = Route.useLoaderData() as { project: Project };
   const others = projects.filter((p) => p.slug !== project.slug);
 
   return (
@@ -53,7 +54,13 @@ function CaseStudy() {
       <section className="px-3 sm:px-5">
         <div className="mx-auto max-w-6xl panel overflow-hidden relative">
           <div className="relative">
-            <MediaPlaceholder src={project.cover} alt={project.client} ratio="21/9" priority />
+            <VideoEmbed
+              youtubeId={project.youtubeId}
+              title={`${project.client} — ${project.title}`}
+              ratio="21/9"
+              label={project.role}
+              priority
+            />
           </div>
           <div className="p-6 sm:p-10 lg:p-14">
             <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
@@ -105,7 +112,9 @@ function CaseStudy() {
 
       <section className="px-3 sm:px-5 mt-10">
         <div className="mx-auto max-w-6xl grid grid-cols-12 gap-4">
-          <MediaPlaceholder src={project.cover} alt={project.client} ratio="16/9" className="col-span-12 lg:col-span-8" />
+          <div className="col-span-12 lg:col-span-8">
+            <MediaPlaceholder src={project.cover} alt={project.client} ratio="16/9" />
+          </div>
           <div className="col-span-12 lg:col-span-4 panel p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute -right-16 -top-16 size-64 glow-orange opacity-40" />
             <div>
@@ -130,9 +139,9 @@ function CaseStudy() {
             <Link to="/work" className="text-sm text-foreground/80 hover:text-primary">All work →</Link>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
-            {others.map((o) => (
+            {others.map((o: Project) => (
               <Link key={o.slug} to="/work/$slug" params={{ slug: o.slug }} className="group">
-                <MediaPlaceholder src={o.cover} alt={o.client} ratio="16/9" label={o.role} />
+                <VideoEmbed youtubeId={o.youtubeId} title={o.client} ratio="16/9" label={o.role} />
                 <div className="mt-3">
                   <div className="text-xs text-muted-foreground">{o.category}</div>
                   <div className="text-lg font-medium group-hover:text-primary">{o.client}</div>
